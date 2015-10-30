@@ -32,7 +32,7 @@ compile = ( mimosaConfig, file, cb ) ->
 
 
 getExtensions  = ( mimosaConfig ) ->
-    mimosaConfig.lsx.extensions
+    mimosaConfig.livereact.extensions
 
 
 module.exports =
