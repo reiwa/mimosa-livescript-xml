@@ -8,19 +8,19 @@ config-defaults = ->
 config-validate = (config, validators) ->
     errors = []
 
-    if  validators.ifExistsIsObject errors, "lsx config", config.lsx
+    if  validators.ifExistsIsObject errors, "livereact config", config.livereact
 
-        if validators.isArrayOfStringsMustExist errors, \lsx.extensions, config.lsx.extensions
+        if validators.isArrayOfStringsMustExist errors, \livereact.extensions, config.livereact.extensions
 
-            if config.lsx.extensions.length is 0
-                errors.push "lsx.extensions cannot be an empty array"
+            if config.livereact.extensions.length is 0
+                errors.push "livereact.extensions cannot be an empty array"
 
     return errors
 
 
 compile = ( mimosaConfig, file, cb ) ->
     const code         = file.inputFileText
-          options      = mimosaConfig.lsx.options
+          options      = mimosaConfig.livereact.options
           coffee-react = require \coffee-react-transform
           livescript   = require \livescript
 
@@ -36,7 +36,7 @@ getExtensions  = ( mimosaConfig ) ->
 
 
 module.exports =
-    name:         \lsx
+    name:         \livereact
     compilerType: \javascript
     extensions:   getExtensions
     compile:      compile

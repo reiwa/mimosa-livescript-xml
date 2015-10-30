@@ -1,5 +1,5 @@
 name:    \mimosa-livereact
-version: \0.0.3
+version: \0.0.4
 
 description: "A Mimosa 2.0 module for LiveScript (XML) compiling"
 
