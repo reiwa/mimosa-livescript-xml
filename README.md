@@ -3,15 +3,15 @@
 ### Overview
 
 This is a LiveScript (XML) compiler for the Mimosa build tool.
-Check out livescript.net for more information, examples, usage, and a language reference.
+Check out [livescript.net](http://livescript.net) for more information, examples, usage, and a language reference.
 
 ### Usage
 
-Add `\liveReact` your list of modules. Mimosa will install the module for you when you start `mimosa watch` or `mimosa build`.
+Add `\livescript-xml` your list of modules. Mimosa will install the module for you when you start `mimosa watch` or `mimosa build`.
 
 ### Default Config
 
-    livereact:
+    livescriptxml:
         extensions: [ \ls, \lsx ]
         options:
             bare: true

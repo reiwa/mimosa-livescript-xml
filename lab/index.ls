@@ -1,5 +1,5 @@
 config-defaults = ->
-    livereact:
+    livescriptxml:
         extensions: [ \ls, \lsx ]
         options:
             bare: true
@@ -8,19 +8,19 @@ config-defaults = ->
 config-validate = (config, validators) ->
     errors = []
 
-    if  validators.ifExistsIsObject errors, "livereact config", config.livereact
+    if  validators.ifExistsIsObject errors, "livescriptxml config", config.livescriptxml
 
-        if validators.isArrayOfStringsMustExist errors, \livereact.extensions, config.livereact.extensions
+        if validators.isArrayOfStringsMustExist errors, \livescriptxml.extensions, config.livescriptxml.extensions
 
-            if config.livereact.extensions.length is 0
-                errors.push "livereact.extensions cannot be an empty array"
+            if config.livescriptxml.extensions.length is 0
+                errors.push "livescriptxml.extensions cannot be an empty array"
 
     return errors
 
 
 compile = ( mimosaConfig, file, cb ) ->
     const code         = file.inputFileText
-          options      = mimosaConfig.livereact.options
+          options      = Object.create mimosaConfig.livescriptxml.options
           coffee-react = require \coffee-react-transform
           livescript   = require \livescript
 
@@ -32,11 +32,11 @@ compile = ( mimosaConfig, file, cb ) ->
 
 
 getExtensions  = ( mimosaConfig ) ->
-    mimosaConfig.livereact.extensions
+    mimosaConfig.livescriptxml.extensions
 
 
 module.exports =
-    name:         \livereact
+    name:         \livescriptxml
     compilerType: \javascript
     extensions:   getExtensions
     compile:      compile
