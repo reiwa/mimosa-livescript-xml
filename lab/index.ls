@@ -1,6 +1,6 @@
 config-defaults = ->
-    lsx:
-        extensions: [ \lsx ]
+    livereact:
+        extensions: [ \ls, \lsx ]
         options:
             bare: true
 
