@@ -1,8 +1,8 @@
 exports.config =
-    modules: [ \eslint, \copy ]
+    modules: [ \eslint, \copy, \livescript ]
     watch:
-        sourceDir:     \src
-        compiledDir:   \lib
+        sourceDir:     \lab
+        compiledDir:   \src
         javascriptDir: null
     eslint:
         options:

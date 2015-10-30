@@ -1,54 +1,44 @@
 config-defaults = ->
-    cjsx:
-      extensions: [ \cjsx ]
-      options: {}
+    lsx:
+        extensions: [ \lsx ]
+        options:
+            bare: true
 
-
-config-placeholder = ->
-    """
-    \t\n\n
-    cjsx:                       # config settings for the cjsx compiler module\n" +
-        lib: undefined          # use this property to provide a specific version of cjsx-tools\n" +
-        extensions: [\"cjsx\"]  # default extensions for cjsx files\n" +
-        options: {}             # default options will get passed to coffee compiler\n"
-    """
 
 config-validate = (config, validators) ->
-    var errors = []
+    errors = []
 
-    if  validators.ifExistsIsObject errors, "lsx config", config.cjsx
+    if  validators.ifExistsIsObject errors, "lsx config", config.lsx
 
-        if !config.cjsx.lib
-            config.cjsx.lib = require( "coffee-react" )
+        if validators.isArrayOfStringsMustExist errors, \lsx.extensions, config.lsx.extensions
 
-        if validators.isArrayOfStringsMustExist errors, \lsx.extensions, config.cjsx.extensions
-            if config.cjsx.extensions.length is 0
+            if config.lsx.extensions.length is 0
                 errors.push "lsx.extensions cannot be an empty array"
 
     return errors
 
 
-compile        = ( mimosaConfig, file, cb ) ->
-    const output  = null
-          error   = null
-          text    = file.inputFileText
-          options = mimosaConfig.cjsx.options
-    try
-        output = mimosaConfig.cjsx.lib.compile text, options
-    catch ( err ) ->
-        error  = err
+compile = ( mimosaConfig, file, cb ) ->
+    const code         = file.inputFileText
+          options      = mimosaConfig.lsx.options
+          coffee-react = require \coffee-react-transform
+          livescript   = require \livescript
+
+    output = try
+        livescript.compile ( coffee-react code ), options
+    catch {error}
+
     cb error, output
 
 
 getExtensions  = ( mimosaConfig ) ->
-    mimosaConfig.cjsx.extensions
+    mimosaConfig.lsx.extensions
 
 
 module.exports =
-    name:         \clx
+    name:         \lsx
     compilerType: \javascript
-    defaults:     config-defaults
-    placeholder:  config-placeholder
-    validate:     config-validate
-    compile:      compile
     extensions:   getExtensions
+    compile:      compile
+    defaults:     config-defaults
+    validate:     config-validate

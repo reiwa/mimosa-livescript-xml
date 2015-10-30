@@ -1,0 +1,6 @@
+.git/
+.DS_Store
+lab/
+node_modules/
+mimosa-config.ls
+mimosa-config.js

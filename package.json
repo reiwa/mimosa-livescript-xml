@@ -1,12 +1,20 @@
 {
   "name": "mimosa-lsx",
-  "version": "1.0.0",
   "description": "lsx - LiveScript XML",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "keywords": [
+    "mimosa",
+    "mmodule",
+    "livescript"
+  ],
+  "author": "sakana",
+  "license": "MIT",
+  "main": "./src",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sakanabiscuit/mimosa-lsx"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "coffeeReactTransform": "^3.3.0",
+    "livescript": "^1.4.0"
+  }
 }
