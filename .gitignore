@@ -1,3 +1,14 @@
-.git/
+# Node.js
+node_modules
+
+# PHPStorm
+.idea
+
+# macOS
 .DS_Store
-node_modules/
+
+# other
+*.swp
+*.log
+*.zip
+*~
