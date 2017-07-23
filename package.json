@@ -1,6 +1,6 @@
 {
   "name": "mimosa-livescript-xml",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Mimosa 2.0 module for LiveScript (XML) compiling",
   "license": "MIT",
   "author": "uufish",
@@ -14,5 +14,5 @@
     "coffee-react-transform": "^3.3.0",
     "livescript": "^1.4.0"
   },
-  devDependencies: {}
+  "devDependencies": {}
 }
